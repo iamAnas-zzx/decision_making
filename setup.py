@@ -20,7 +20,6 @@ URL = ""
 DOWNLOAD_URL = ""
 LICENSE = ""
 PROJECT_URLS = {
-    "Bug Tracker": "",
     "Documentation": "",
     "Source Code": "",
 }
@@ -31,8 +30,9 @@ from decision_making import min_dependency as md
 
 def setup_package():
     python_requires = ">=3.9"
-    required_python_version = (3, 9)
+    # required_python_version = (3, 9)
     metadata = dict(
+        packages=find_packages(),
         name=DISTNAME,
         maintainer=MAINTAINER,
         maintainer_email=MAINTAINER_EMAIL,

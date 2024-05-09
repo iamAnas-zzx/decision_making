@@ -1,2 +1,3 @@
-exclude venv
+exclude myenv
 exclude test
+exclude .gitignore
