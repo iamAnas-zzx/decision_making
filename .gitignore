@@ -1,4 +1,4 @@
-myenv/
+.venv/
 test/
 build/
 dist/
