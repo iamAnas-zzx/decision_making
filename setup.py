@@ -1,36 +1,30 @@
 
-import importlib
-import os
-import platform
-import sys
-
 from os.path import join
 from setuptools import  setup, find_packages
-from setuptools.command.build_ext import build_ext
+
 
 
 
 DISTNAME = "decision_making"
-DESCRIPTION = "A set of python modules for machine learning."
+DESCRIPTION = "A python package for Fuzzy-Multi Criteria Decision Making problems."
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
-MAINTAINER = ""
-MAINTAINER_EMAIL = ""
-URL = ""
+MAINTAINER = "Ahmad Anas, Eeshan Anand"
+MAINTAINER_EMAIL = "anasahamd9616@gmail.com"
+URL = "https://github.com/iamAnas-zzx/decision_making.git"
 DOWNLOAD_URL = ""
-LICENSE = ""
+LICENSE = "MIT"
 PROJECT_URLS = {
-    "Documentation": "",
-    "Source Code": "",
+    "Documentation": "http://github.com/iamAnas-zzx/decision_making.git",
+    "Source Code": "https://github.com/iamAnas-zzx/decision_making.git",
 }
-VERSION = "1.0.1"
+VERSION = "1.0.0"
 
 from decision_making import min_dependency as md
 
 
 def setup_package():
     python_requires = ">=3.9"
-    # required_python_version = (3, 9)
     metadata = dict(
         packages=find_packages(),
         name=DISTNAME,
@@ -46,17 +40,15 @@ def setup_package():
         classifiers=[
             "Intended Audience :: Science/Research",
             "Intended Audience :: Developers",
-            "License :: OSI Approved :: BSD License",
+            "License :: OSI Approved :: MIT License",
             "Programming Language :: Python",
             "Topic :: Software Development",
             "Topic :: Scientific/Engineering",
-            "Development Status :: Production/Stable",
-            "Operating System :: Microsoft :: Windows",
-            "Operating System :: Unix",
-            "Operating System :: MacOS",
-            "Programming Language :: Python :: 3.12",
+            "Development Status :: 5 - Production/Stable",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python :: 3.9",
             "Programming Language :: Python :: Implementation :: CPython",
-            "Programming Language :: Python :: Implementation :: PyPy",
+            "Programming Language :: Python :: Implementation :: PyPy"
         ],
         python_requires=python_requires,
         install_requires=md.install_requires,
@@ -65,25 +57,6 @@ def setup_package():
         },
         zip_safe=False,  # the package can run out of an .egg file
     )
-
-    # commands = [arg for arg in sys.argv[1:] if not arg.startswith("-")]
-    # if not all(
-    #     command in ("egg_info", "dist_info", "clean", "check") for command in commands
-    # ):
-    #     if sys.version_info < required_python_version:
-    #         required_version = "%d.%d" % required_python_version
-    #         raise RuntimeError(
-    #             "Decision_Making requires Python %s or later. The current"
-    #             " Python version is %s installed in %s."
-    #             % (required_version, platform.python_version(), sys.executable)
-    #         )
-
-    #     check_package_status("numpy", min_deps.NUMPY_MIN_VERSION)
-    #     check_package_status("scipy", min_deps.SCIPY_MIN_VERSION)
-
-    #     _check_cython_version()
-    #     metadata["ext_modules"] = configure_extension_modules()
-    #     metadata["libraries"] = libraries
     setup(**metadata)
 
 if __name__ == "__main__":

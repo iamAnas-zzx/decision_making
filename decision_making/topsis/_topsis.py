@@ -139,6 +139,10 @@ class Check_parameters_TOPSIS:
             self.check_redundancy=1
             raise ValueError("The shape of the data is not correct")
             
+        #we are gonna replace all the columns having int datatype to float datatype
+        for column in self.data.select_dtypes(include=['int']):
+            self.data[column] = self.data[column].astype(float)
+
         #if any dtype is not numeric then we need to ask for the dict_encode otherwise no need
         check_for_non_numeric=False
         for i in self.data.dtypes.values:
@@ -164,16 +168,9 @@ class Check_parameters_TOPSIS:
                     raise ValueError("The key of the dictionary provided is not numeric")
         
         #now all we have to do is to encode the categorical columns in the dataframe and encode it with the values
-        # data_copy=self.data.copy()
-        # for col, dt in data_copy.dtypes.items():
-        #     if (dt=='int' or dt=='float')==False:
-        #         data_copy[col] = data_copy[col].map(self.dict_encode)
-                
-        #Fixed issue part
-        # Encode non-numeric values in the DataFrame using dict_encode
         data_copy=self.data.copy()
         for col, dt in data_copy.dtypes.items():
-            if dt == 'object':  # Check if the column contains non-numeric values
+            if (dt=='int' or dt=='float')==False:
                 data_copy[col] = data_copy[col].map(self.dict_encode)
 
         #suppose if any element isn't present, then we must figure it out        
