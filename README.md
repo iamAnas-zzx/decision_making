@@ -75,13 +75,13 @@ We appreciate your interest and enthusiasm to our project! Whether you're a seas
 
 ### Important Links
 
-- Official source code repo: https://github.com/scikit-learn/scikit-learn
-- Download releases: https://pypi.org/project/scikit-learn/
+- Official source code repo: https://
+- Download releases: 
 
 ### Contributing
 
 We welcome and greatly appreciate contributions from the community to enhance the functionality and improve the quality of our Python package. By contributing to this project, you must agree to the
-[Contributing guidelines](https://scikit-learn.org/dev/developers/contributing.html).
+[Contributing guidelines](https://).
 
 ### Source code
 
@@ -105,7 +105,6 @@ If you followed tutorials, include links to those here as well.
 The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
 
 ---
-
 
 
 ## Help and Support

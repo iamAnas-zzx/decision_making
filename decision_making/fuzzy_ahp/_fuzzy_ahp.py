@@ -1,18 +1,16 @@
-
 import numpy as np
 from scipy.stats import gmean
 import pandas as pd
 
+#Parameter chcek
 
-
-## Parameter check
 '''
 Matrix_check_FUZZY_AHP-is object that check whether the parameters provided for Fuzzy_Ahp is correct or not.
 The parameter mainly consists of:-
 criteria_names-consists of names of the criteria
 alternative_names-consists of names of the alternatives
-matrix_per_criteria-consist of 3d tensor that contain alternative-alternative comparision per criteria in form of 
-human semantics
+matrix_per_criteria-consist of 3d tensor that contain alternative-alternative comparision per criteria in form of human 
+semantics
 criteria_comparison-consist of comparision between criterias in form of human semantics.
 '''
 
@@ -38,7 +36,8 @@ class Matrix_check_FUZZY_AHP:
         '''
         
         self.check_dimentions_and_dtype()
-        print("Parameter check: PASSED")
+        print("Parameter check: Passed")
+
     
     
     def check_dimentions_and_dtype(self):
@@ -97,23 +96,18 @@ class Matrix_check_FUZZY_AHP:
                     
         
         #check whether each element is numpy array or not
-        
+
         if type(self.matrix_per_criteria)!=np.ndarray:
             self.check_redundancy=1
-            raise ValueError("Element in the matrix_per_criteria is not numpy array.")
-            
-        #check whether the type of the self.matrix_per_criteria is object or str or neither
-        if self.matrix_per_criteria.dtype!='<U3' and self.matrix_per_criteria.dtype!=object:
-            self.check_redundancy=1
-            raise ValueError("Element in the matrix_per_criteria is neither object nor string")
-            
+            raise ValueError("Element in the matrix_per_criteria is not numpy array.")    
+         
         if self.matrix_per_criteria.ndim!=3:
             self.check_redundancy=1
             raise ValueError("The dimention of the element in matrix_per_criteria is not 3D.")
             
         if self.matrix_per_criteria.shape[0]!=criteria_len or self.matrix_per_criteria.shape[1]!=alternative_len or self.matrix_per_criteria.shape[2]!= alternative_len:
             self.check_redundancy=1
-            raise ValueError(f"The shape of the element in matrix list of criteria is not correct. It should be ({criteria_len},{alternative_len}, {alternative_len})")
+            raise ValueError(f"The shape of the element in matrix list of criteria is not correct. It should be ({criteria_len}, {alternative_len}, {alternative_len})")
             
         #check whether every element if present in the key provided in the fuzzy table or not
         
@@ -127,6 +121,8 @@ class Matrix_check_FUZZY_AHP:
                         self.check_redundancy=1
                         raise ValueError("The element not present in the dictionary")
                     
+            
+        
         #-------------------------------------------------------- 
         
             
@@ -136,15 +132,11 @@ class Matrix_check_FUZZY_AHP:
             self.check_redundancy=1
             raise ValueError("The criteria comparision is not numpy array.")
             
-        #the dtype must be object or string
-        if self.criteria_comparison.dtype!='<U3' and self.criteria_comparison.dtype!=object:
-            self.check_redundancy=1
-            raise ValueError("Element in the matrix_per_criteria is neither object nor string")
-            
         #the dimentions must be 2 as we are only accepting comparision matrix
         if self.criteria_comparison.ndim!=2:
             self.check_redundancy=1
-            raise ValueError("The dimention of the element in criteria comparision is not 1D/2D.")
+            raise ValueError("The dimention of the element in criteria comparision is not 2D.")
+            
         #check the shape
         if self.criteria_comparison.shape[0]!=criteria_len or self.criteria_comparison.shape[1]!=criteria_len:
             self.check_redundancy=1
@@ -155,13 +147,12 @@ class Matrix_check_FUZZY_AHP:
             for j in range(m):
                 if self.criteria_comparison[i][j] not in self.fuzzy_table:
                     self.check_redundancy=1
-                    raise ValueError("The element not present in the dictionary") 
+                    raise ValueError("The element not present in the dictionary")
         #-------------------------------------------------------- 
 
 
 
-
-## Fuzzy-Ahp
+#Fuzzy_AHP
 '''
 The function returns the most suitable alternative provided the criteria_names, alternative_names, matrix_per_criteria, 
 criteria_comparison and fuzzy_table
@@ -170,8 +161,8 @@ If any error is raised in Matrix_check_FUZZY_AHP then the process wont proceed e
 The displayed result depends on what user want.
 If they wish to see that the weight matrix in the end then they can see it tuning the value of print_weight_matrix which is 
 by default set to false
-If they wish to see that the rank array in the end then they can see it tuning the value of rank_array which is by default 
-set to True
+If they wish to see that the rank array in the end then they can see it tuning the value of rank_array which is by default set
+to True
 '''
 
 class Fuzzy_Ahp(Matrix_check_FUZZY_AHP):
@@ -204,8 +195,8 @@ class Fuzzy_Ahp(Matrix_check_FUZZY_AHP):
         
         '''
         The find_chart does the heavy lifting. It does all the computation part
-        Since we have deployed 2d/3d and even 4d tensors instead of normals lists, we get to see good efficiency and 
-        reduced computation
+        Since we have deployed 2d/3d and even 4d tensors instead of normals lists, we get to see good efficiency and reduced 
+        computation
         Once this is done, we have calculated the weighted_matrix and rank_array.
         Once done we can use show find to print the best alternative
         '''
@@ -311,3 +302,4 @@ class Fuzzy_Ahp(Matrix_check_FUZZY_AHP):
             print(f"{index+1}. {ele[0]} has value = {ele[1]}")
             
         print(f"The most suitable alternative to choose is :- {self.most_suitable_alternative}")
+

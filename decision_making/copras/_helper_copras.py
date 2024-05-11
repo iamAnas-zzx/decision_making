@@ -1,7 +1,7 @@
 from ._copras import COPRAS
 
-def copras(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison, fuzzy_table, print_weight_matrix=False, print_rank_array=True, print_fuzzy_table=False):
+def copras(criteria_names, alternative_names, data, weights_criteria, benificial_cost_mark, show_rank_array=True):
     try:
-        COPRAS(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison, fuzzy_table, print_weight_matrix, print_rank_array, print_fuzzy_table)
+        COPRAS(criteria_names, alternative_names, data, weights_criteria, benificial_cost_mark, show_rank_array)
     except ValueError as ve:
-        print(ve)
+        print(f'Error: {ve}')

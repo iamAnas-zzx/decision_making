@@ -164,33 +164,32 @@ class Check_parameters_TOPSIS:
                     raise ValueError("The key of the dictionary provided is not numeric")
         
         #now all we have to do is to encode the categorical columns in the dataframe and encode it with the values
+        # data_copy=self.data.copy()
+        # for col, dt in data_copy.dtypes.items():
+        #     if (dt=='int' or dt=='float')==False:
+        #         data_copy[col] = data_copy[col].map(self.dict_encode)
+                
+        #Fixed issue part
+        # Encode non-numeric values in the DataFrame using dict_encode
         data_copy=self.data.copy()
         for col, dt in data_copy.dtypes.items():
-            if (dt=='int' or dt=='float')==False:
+            if dt == 'object':  # Check if the column contains non-numeric values
                 data_copy[col] = data_copy[col].map(self.dict_encode)
-                
-        
+
         #suppose if any element isn't present, then we must figure it out        
-        for col in data.select_dtypes(include=['object']).columns: # type: ignore
-            unique_values = data[col].unique() # type: ignore
+        for col in self.data.select_dtypes(include=['object']).columns: 
+            unique_values = self.data[col].unique() 
             for value in unique_values:
-                if value not in dict_encode: # type: ignore
+                if value not in self.dict_encode: 
                     raise ValueError(f"Value '{value}' in column '{col}' does not have a corresponding encoding in dict_encode")
             
-
         self.data_in_numpy=np.array(data_copy.values, dtype='float')
-        
-        
-        
         
 #         print(data_copy)
 #         print(self.data_in_numpy)
 #         print(self.benificial_cost_mark)
 #         print(self.weights_criteria)
-        
-                
-            
-        
+
 
 
 ##TOPSIS
@@ -266,7 +265,7 @@ class TOPSIS(Check_parameters_TOPSIS):
         #if we have cost as the criteria then v_j_plus and v_j_minus will be completely opposite
         #swap them if this occur
         for i in range(len(self.benificial_cost_mark)):
-            if benificial_cost_mark[i]==0: # type: ignore #this is cost, replace v_j_minum[i] with v_j_plus[i]
+            if self.benificial_cost_mark[i]==0:  #this is cost, replace v_j_minum[i] with v_j_plus[i]
                 v_j_plus[i], v_j_minus[i]=v_j_minus[i], v_j_plus[i]
         
         #assign the value of v_j_plus and v_j_minus to attribute self.vj_plus and self.vj_minus

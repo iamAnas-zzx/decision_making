@@ -4,4 +4,5 @@ def fuzzy_ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_c
     try:
         Fuzzy_Ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison, fuzzy_table, print_weight_matrix, print_rank_array, print_fuzzy_table)
     except ValueError as ve:
-        print(ve)
+        print(f'Error: {ve}')
+        

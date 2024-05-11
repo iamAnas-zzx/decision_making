@@ -10,10 +10,11 @@ The parameter mainly consists of:-
 criteria_names-consists of names of the criteria
 alternative_names-consists of names of the alternatives
 data-consist of data provided by the user. The data can have either numerical (int/float) or non numerica (object/string) 
-values weights_criteria-This keeps the weight of the attributes which can be multiplied to normalized matrix in order to get 
-weight normalized matrix
+values
+weights_criteria-This keeps the weight of the attributes which can be multiplied to normalized matrix in order to get weight
+normalized matrix
 benificial_cost_mark- keep track of attributes which are either cost or benefit
-dict_encode(sometimes mandatory sometimes not)-maps the value of non numeric value to numeric but only mandatory if data has 
+dict_encode(sometimes mandatory sometimes not)-maps the value of non numeric value to numeric but only mandatory if data has
 non numerical features
 '''
 class Check_parameters_Fuzzy_TOPSIS:
@@ -40,7 +41,7 @@ class Check_parameters_Fuzzy_TOPSIS:
         '''
         
         self.check_dimentions_and_dtype()
-        print("Everything is fine")
+        print("Parameter check: Passed")
         
         
     def check_dimentions_and_dtype(self):
@@ -182,29 +183,28 @@ class Check_parameters_Fuzzy_TOPSIS:
         self.data_with_fuzzy=np.ones((self.data.shape[0], self.data.shape[1], 3))
         for i in range(self.data.shape[0]):
             for j in range(self.data.shape[1]):
-                if data[i][j] not in self.dict_encode: # type: ignore
+                if self.data[i][j] not in self.dict_encode: 
                     self.check_redundancy=1
                     raise ValueError("The element not present in the dictionary")
                 self.data_with_fuzzy[i][j]=np.array(self.dict_encode[self.data[i][j]])
+                
 #         print(self.data_with_fuzzy)
 
+#Fuzzy_Topsis
 
-
-
-#TOPSIS
 '''
-The function returns the most suitable alternative provided the criteria_names, alternative_names,data, weights_criteria, 
+The function returns the most suitable alternative provided the criteria_names, alternative_names,data, weights_criteria,
 benificial_cost_mark, dict_encode
 It also inherits Check_parameters_Fuzzy_TOPSIS which check whether the parameters provided is correct or not
 If any error is raised in Check_parameters_TOPSIS then the process wont proceed else it will show the results.
 The displayed result depends on what user want.
-If they wish to see that the rank array in the end then they can see it tuning the value of rank_array which is by 
-default set to True
+If they wish to see that the rank array in the end then they can see it tuning the value of rank_array which is by default 
+set to True
 The rank array consist of the score it gave to every alternative
 '''
 
 class FUZZY_TOPSIS(Check_parameters_Fuzzy_TOPSIS):
-    def __init__(self, criteria_names, alternative_names, data, weights_criteria, benificial_cost_mark, dict_encode,show_rank_array=True):
+    def __init__(self, criteria_names, alternative_names, data, weights_criteria, benificial_cost_mark, dict_encode, show_rank_array=True):
         '''
         Used the inherited Check_parameters_Fuzzy_TOPSIS function
         '''
@@ -224,8 +224,8 @@ class FUZZY_TOPSIS(Check_parameters_Fuzzy_TOPSIS):
         self.vj_plus=None
         self.vj_minus=None
         
-        #we need to keep track of the location of Euclidean distance between the target alternative and the 
-        #best/worst alternative and for each alternative
+        #we need to keep track of the location of Euclidean distance between the target alternative and the best/worst 
+        #alternative and for each alternative
         #which is indicated using di_plus and di_minus
         #di_plus is euclidean distance wrt vj_plus of every criteria
         #di_minus is euclidean distance wrt vj_minus of every criteria

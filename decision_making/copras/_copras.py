@@ -33,7 +33,7 @@ class Check_parameters_COPRAS:
         if not, we will see the message-"Everything is fine"
         '''
         self.check_dimentions_and_dtype()
-        print("Everything is fine")
+        print("Parameter check: Passed")
         
     def check_dimentions_and_dtype(self):
         #check dtypes of criteria and alternative names
@@ -63,7 +63,7 @@ class Check_parameters_COPRAS:
             self.check_redundancy=1
             raise ValueError("The data provided is not numpy array")
         #the self.data should have dtype as float or int
-        if(not(data.dtype=='int' or data.dtype=='float')): # type: ignore
+        if(not(self.data.dtype=='int' or self.data.dtype=='float')): 
             self.check_redundancy=1
             raise ValueError("The dtype of the given data should either be int or float")
             
@@ -73,7 +73,7 @@ class Check_parameters_COPRAS:
             raise ValueError("The numpy tensor doesnt have dimention=2")
         
         #check for the shape of data provided
-        if(data.shape[0]!=len(self.alternative_names) or data.shape[1]!=len(self.criteria_names)): # type: ignore
+        if(self.data.shape[0]!=len(self.alternative_names) or self.data.shape[1]!=len(self.criteria_names)): # type: ignore
             self.check_redundancy=1
             raise ValueError("The shape of the data provided is inconsistent")
 
@@ -85,14 +85,14 @@ class Check_parameters_COPRAS:
             raise ValueError("The weight_criteria is neither list nor np.array")
         
         
-        #check if weights_criteria is nd.array, it should have one dimention and shape is good
+        #check if weights_criteria is nd.array, it should have one dimention and shape must be good
         if type(self.weights_criteria)==np.ndarray:
             if self.weights_criteria.ndim!=1 or self.weights_criteria.shape[0]!=len(self.criteria_names):
                 self.check_redundancy=1
                 raise ValueError("The weights_criteria must have 1 dim or correct shape")  
                 
-        #if weights_criteria is not np.array, check its len
-        if type(self.weights_criteria)==list and len(self.weights_criteria)!=len(self.criteria_names):
+        #if weights_criteria is not np.array, then it must be a list, in that case check its length
+        if type(self.weights_criteria)!=list or len(self.weights_criteria)!=len(self.criteria_names):
             self.check_redundancy=1
             raise ValueError("The benificial_cost_mark list have correct shape")
             
@@ -115,24 +115,23 @@ class Check_parameters_COPRAS:
         #the most important thing is whether the weight provided by user is normalized or not
         #we will make it normalized by deviding elements by sum of the array
         self.weights_criteria=self.weights_criteria/np.sum(self.weights_criteria, axis=0)
-#         print(self.weights_criteria)
+        #print(self.weights_criteria)
 
         #----------------------------------------------------------------------------------------
         
-
         #check whether the beneficial_cost_mark is a list or not
         if type(self.benificial_cost_mark)!=list and type(self.benificial_cost_mark)!=np.ndarray:
             self.check_redundancy=1
             raise ValueError("The benificial_cost_mark is neither list nor np.array")
             
-        #check if beneficial_cost_mark is nd.array, it should have one dimention and shape is good
+        #check if beneficial_cost_mark is nd.array, it should have one dimention and shape must be good
         if type(self.benificial_cost_mark)==np.ndarray:
             if self.benificial_cost_mark.ndim!=1 or self.benificial_cost_mark.shape[0]!=len(self.criteria_names):
                 self.check_redundancy=1
                 raise ValueError("The benificial_cost_mark must have 1 dim or correct length")
         
-        #if benificial_cost_mark is not np.array, check its len
-        if type(self.benificial_cost_mark)==list and len(self.benificial_cost_mark)!=len(self.criteria_names):
+        #if benificial_cost_mark is not np.array, then it must be a list, in that case check its length 
+        if type(self.benificial_cost_mark)!=list or len(self.benificial_cost_mark)!=len(self.criteria_names):
             self.check_redundancy=1
             raise ValueError("The benificial_cost_mark list have correct shape")
             
@@ -146,7 +145,6 @@ class Check_parameters_COPRAS:
         #if benificial_cost_mark is not np.array, make it np.array, easier for comptation
         if type(self.benificial_cost_mark)==list:
             self.benificial_cost_mark=np.array(self.benificial_cost_mark)
-        
 
 
 #Copras
@@ -184,7 +182,6 @@ class COPRAS(Check_parameters_COPRAS):
         
         #similar we can have attributes for qi(relative significance) 
         self.qi=None
-
         
         #udi(utility degree) can be used in rank array that can be used to assign the preference of alternative
         self.show_rank_array=show_rank_array
@@ -219,11 +216,9 @@ class COPRAS(Check_parameters_COPRAS):
         self.qi=self.bi+np.min(self.ci)*np.sum(self.ci)/(self.ci*np.sum(min(self.ci)/self.ci))
         
         #the rank array or the udi
-        self.rank_array=qi/np.max(qi) * 100 # type: ignore
+        self.rank_array=self.qi/np.max(self.qi) * 100 
         self.rank_array=self.rank_array.reshape(-1)
 #         print(self.rank_array)
-
-
 
     def show(self):
         if self.show_rank_array==True:

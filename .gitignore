@@ -2,10 +2,11 @@
 test/
 build/
 dist/
-Decision_Making.egg-info/
+decision_making.egg-info
 decision_making/__pycache__/
 decision_making/ahp/__pycache__/
 decision_making/copras/__pycache__/
 decision_making/fuzzy_ahp/__pycache__/
 decision_making/fuzzy_topsis/__pycache__/
+decision_making/fuzzy_copras/__pycache__/
 decision_making/topsis/__pycache__/

@@ -10,7 +10,7 @@ from setuptools.command.build_ext import build_ext
 
 
 
-DISTNAME = "Decision_Making"
+DISTNAME = "decision_making"
 DESCRIPTION = "A set of python modules for machine learning."
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
@@ -23,7 +23,7 @@ PROJECT_URLS = {
     "Documentation": "",
     "Source Code": "",
 }
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 from decision_making import min_dependency as md
 
@@ -50,7 +50,7 @@ def setup_package():
             "Programming Language :: Python",
             "Topic :: Software Development",
             "Topic :: Scientific/Engineering",
-            "Development Status :: 5 - Production/Stable",
+            "Development Status :: Production/Stable",
             "Operating System :: Microsoft :: Windows",
             "Operating System :: Unix",
             "Operating System :: MacOS",

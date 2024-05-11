@@ -4,6 +4,4 @@ def ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_compari
     try:
         return Ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison, custom_inconsistency , print_weight_matrix, print_rank_array)
     except ValueError as ve:
-        print(ve)
-        #correct way
-        #print(f'Error: {ve}')
+        print(f'Error: {ve}')
