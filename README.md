@@ -67,6 +67,8 @@ Here's a example of how use this library to solve AHP problem.
 For more examples on how to use different methods with explanation see [methods](https://).
 ```python
 
+    #t = ahp()
+
 ```
 
 
