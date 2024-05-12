@@ -13,6 +13,8 @@ decision_making/topsis/__pycache__/
 
 # Editor temporary/working/backup files #
 #########################################
+
+.github
 .#*
 [#]*#
 *~
