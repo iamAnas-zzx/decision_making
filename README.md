@@ -2,7 +2,6 @@
 # Decision_Making
 
 ## Description
-
 decision_making is a Python 3 library for solving Fuzzy-Multi Criteria Decision Making (Fuzzy-MCDM) problems.
 
 The implementation of fuzzy logic in MCDM techniques has enhanced capabilities, allowing users to provide assessments not only in discrete values but also in linguistic forms that include ranges. Through this, we can assess multiple result without having the need to have complete conformity.
@@ -12,8 +11,6 @@ Website for documnents: [docxf-mcdm](http://)
 ---
 
 ## Table of Contents 
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
 
 - [Installation](#installation)
 - [Available Methods](#availablemethods)
