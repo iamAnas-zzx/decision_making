@@ -6,20 +6,19 @@ decision_making is a Python 3 library for solving Fuzzy-Multi Criteria Decision 
 
 The implementation of fuzzy logic in MCDM techniques has enhanced capabilities, allowing users to provide assessments not only in discrete values but also in linguistic forms that include ranges. Through this, we can assess multiple result without having the need to have complete conformity.
 
-Website for documnents: [docxf-mcdm](http://)
+Link for documnents and research paper: [docxdecison-making](https://github.com/iamAnas-zzx/decision_making/tree/main/docx_words)
 
 ---
 
 ## Table of Contents 
 
 - [Installation](#installation)
-- [Available Methods](#availablemethods)
+- [Available Methods](#available-methods)
 - [Usage](#usage)
 - [Features](#features)
-- [Development](#development)
 - [Credits](#credits)
-- [License](#license)
 - [Refernences](#references)
+- [License](#license)
 
 ---
 
@@ -40,34 +39,70 @@ You can simply download and install decision_making by:
 ```bash
 pip install decision_making
 ```
-The documentation includes more detailed [installation instructions](https://).
 
 ---
 
 ## Available Methods
 
-The library conatins methods:
+The library conatins methods with there docx links:
 
-|  Acronym            	|  Method Name                                                                      |                Reference                 |
+|  Acronym            	|  Method Name                                                                      |                Links                |
 | :-------------------- | --------------------------------------------------------------------------------- | :--------------------------------------: |
-|  AHP             	|  Analytic Hierarchy Process         |               [[1]](#c1)                 |
-|  TOPSIS              	|  Technique for the Order of Prioritisation by Similarity to Ideal Solution                |               [[2]](#c2)                 |
-|  COPRAS             	|  Complex Proportional Assessment                                                  |               [[3]](#c3)                 |
-|  Fuzzy-AHP        	|  Fuzzy - Analytic Hierarchy Process      |   [[4]](#c4)      |
-|  Fuzzy-TOPSIS              	|  Fuzzy - Technique for the Order of Prioritisation by Similarity to Ideal Solution    |               [[5]](#c5)                 |
-|  Fuzzy-COPRAS             	|  Fuzzy - Complex Proportional Assessment                                |               [[6]](#c6)                 |
+|  AHP             	|  Analytic Hierarchy Process         |               [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/AHP.docx)                 |
+|  TOPSIS              	|  Technique for the Order of Prioritisation by Similarity to Ideal Solution                |               [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/TOPSIS.docx)                 |
+|  COPRAS             	|  Complex Proportional Assessment                                                  |               [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/COPRAS.docx)                 |
+|  Fuzzy-AHP        	|  Fuzzy - Analytic Hierarchy Process      |   [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/Fuzzy-AHP.docx)      |
+|  Fuzzy-TOPSIS              	|  Fuzzy - Technique for the Order of Prioritisation by Similarity to Ideal Solution    |               [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/Fuzzy-TOPSIS.docx)                 |
+|  Fuzzy-COPRAS             	|  Fuzzy - Complex Proportional Assessment                                |               [Link](https://github.com/iamAnas-zzx/decision_making/blob/main/docx_words/Fuzzy-COPRAS%20.docx)                 |
 
 
 ## Usage
 
 Here's a example of how use this library to solve AHP problem.
-For more examples on how to use different methods with explanation see [methods](https://).
+For more examples on how to use different methods with explanation see the docx of [methods](https://github.com/iamAnas-zzx/decision_making/tree/main/docx_words).
+
 ```python
 
-    #t = ahp()
+    #importing necessary requirements
+    import numpy as np
+    from decision_making import ahp
+    '''
+    Here I provide the criteria names and alternative names
+    The order is strict so please provide list of strings
+    '''
+    criteria_names=["Experience", "Education", "Charisma", "Age"]
+    alternative_names=["Tom", "Rick", "Harry"]
+
+    '''
+    The data provided is in the form of comparision between two terms.
+    In the example we have 4 matrix where the comparision between alternatives is made using a      specific criteria.
+    They are stacked in a 3d tensor so that more parallelism operations can be achieved.
+    And we have a criteria comparision matrix where the comparision between criterias is made.(This can also contain weights in 1d numpy array)
+    '''
+    criteria1 = np.array([[1,1/4,4],
+    [4,1,9],[1/4,1/9,1]])
+    criteria2 = np.array([[1,3,1/5],
+    [1/3,1,1/7],[5,7,1]])
+    criteria3 = np.array([[1,5,9],
+    [1/5,1,4],[1/9,1/4,1]])
+    criteria4 = np.array([[1,1/3,5],
+    [3,1,9],[1/5,1/9,1]])
+
+    # list of matrix containing alternative to alternative comparision 
+    # for every single criteria
+    matrix_per_criteria=np.array([criteria1, criteria2, criteria3, criteria4]) 
+    
+    # criteria comparison matrix
+    criteria_comparison=np.array([[1,4,3,7], [1/4,1,1/3,3], [1/3,3,1,5],[1/7,1/3,1/5,1]])
+    
+    # Evaluting and getting answer
+    ahp(criteria_names,alternative_names,matrix_per_criteria,criteria_comparison,
+    print_weight_matrix=True)
+    # Alternatively creating an object
+    a = ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison,
+    print_weight_matrix=True)
 
 ```
-
 
 ---
 
@@ -78,51 +113,58 @@ Additional features of this library are:
 
 ---
 
-## Development
-
-We appreciate your interest and enthusiasm to our project! Whether you're a seasoned developer or just starting out, your contributions are valuable in making our project better for everyone.
 
 ### Important Links
 
 - Official source code repo: https://github.com/iamAnas-zzx/decision_making.git
-
-### Contributing
-
-We welcome and greatly appreciate contributions from the community to enhance the functionality and improve the quality of our Python package. By contributing to this project, you must agree to the
-[Contributing guidelines](https://).
-
----
+- Official research paper: 
 
 ## Credits
 
 List of our collaborators:
 
+- Ahmad Anas - 
+- Eeshan Anand - 
+---
 
+## References
+
+<a name="ref1">**[1]**</a> P. Audebert, P. Hapiot, J. Electroanal. Chem. 361 (1993) 177. 
+
+<a name="ref1">**[2]**</a> Giorgio Nordo, Saeid Jafari, Arif Mehmood and Bhimraj Basumatary (2024),   A Python Framework f¬or Neutrosophic Sets and Mappings.
+
+<a name="ref1">**[3]**</a> Haitham A. El-Ghareeb (2019), Novel Open Source Python Neutrosophic Package.
+
+<a name="ref1">**[4]**</a> Bartłomiej Kizielewicz, Andrii Shekhovtsov , Wojciech Sałabun (2023),  pymcdm—The universal library for solving multi-criteria decision-making problems.
+
+<a name="ref1">**[5]**</a> Rakesh Ranjan Kumar, Siba Mishra, Chiranjeev Kumar(2017), Prioritizing the solution of cloud service selection using integrated MCDM methods under Fuzzy environment.
+
+<a name="ref1">**[6]**</a> Sudha.S, Edwin Deepak F.X, Nivetha Martin(2023), Integrated Machine Learning Algorithms and MCDM Techniques in Optimal Ranking of Battery Electric Vehicles
+
+<a name="ref1">**[7]**</a> Alaa Alden Al Mohamed, Sobhi Al Mohamed and Moustafa Zino (2023),  Application of fuzzy multicriteria decision-making model in selecting pandemic hospital site.
+
+<a name="ref1">**[8]**</a> İhsan Kayaa,  Murat Çolakb , Fulya Terzi (2019), A comprehensive review of fuzzy multi criteria decision making methodologies for energy policy making.
+
+<a name="ref1">**[9]**</a> Zhang, Y.J.; Sun, Y.F.; Huang, J(2018), Energy efficiency, carbon emission performance, and technology gaps: Evidence from CDM project investment. 
+
+<a name="ref1">**[10]**</a> Javed, M.S.; Ma, T.; Jurasz, J.; Canales, F.A.; Lin, S.; Ahmed, S.; Zhang, Y(2021). Economic analysis and optimization of a renewable energy based power supply system with different energy storages for a remote island. Renew. 
+
+<a name="ref1">**[11]**</a> Dutta, P.; Jaikumar, B.; Arora(2021), M.S. Applications of data envelopment analysis in supplier selection between 2000 and 2020: A literature review. Ann. Oper. Res  315, 1399–1454.
+
+<a name="ref1">**[12]**</a> Kiritsis D., Bufardi A., Xirouchakis P(2003). Multi-criteria decision aid for product end of life options selection. IEEE international symposium on electronics and the environment; IEEE; pp. 48–53.
+
+<a name="ref1">**[13]**</a> Sayadi M.K., Heydari M., Shahanaghi K (2009). Extension of VIKOR method for decision making problem with interval numbers. Appl Math Model. 2009;33(5):2257–2262. doi: 10.1016/j.apm.2008.06.002.
+
+<a name="ref1">**[14]**</a> Jadidi O., Hong T.S., Firouzi F., Yusuff R.M. (2008): An Optimal Grey Based Approach Based on TOPSIS Concept for Supplier Selection Problem. “International Journal of Management Science and Engineering Management”, Vol. 4, No. 2, pp. 104-117.
+
+<a name="ref1">**[15]**</a> Łuczak A., Wysocki F. (2006): Rozmyta wielokryterialna metoda porządkowania liniowego obiektów. Taksonomia 13, Prace Naukowe, Wydawnictwo Akademii Ekonomicznej, Wrocław, pp. 148-157.
+
+<a name="ref1">**[12]**</a> Shih H.S., Shyur H.J., Lee E.S. (2007): An Extension of TOPSIS for Group Decision Making. “Mathematical and Computer Modelling”, Vol. 45, pp. 801-813.
 ---
 
 ## License
 
-MIT License
 
 Copyright (c) 2024 decision_making
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-## References
+The project is license under the terms of the MIT License(MIT).
