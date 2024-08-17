@@ -75,7 +75,7 @@ For more examples on how to use different methods with explanation see the docx 
 
     '''
     The data provided is in the form of comparision between two terms.
-    In the example we have 4 matrix where the comparision between alternatives is made using a      specific criteria.
+    In the example we have 4 matrix where the comparision between alternatives is made using a specific criteria.
     They are stacked in a 3d tensor so that more parallelism operations can be achieved.
     And we have a criteria comparision matrix where the comparision between criterias is made.(This can also contain weights in 1d numpy array)
     '''
@@ -160,6 +160,7 @@ List of our collaborators:
 <a name="ref1">**[15]**</a> Łuczak A., Wysocki F. (2006): Rozmyta wielokryterialna metoda porządkowania liniowego obiektów. Taksonomia 13, Prace Naukowe, Wydawnictwo Akademii Ekonomicznej, Wrocław, pp. 148-157.
 
 <a name="ref1">**[12]**</a> Shih H.S., Shyur H.J., Lee E.S. (2007): An Extension of TOPSIS for Group Decision Making. “Mathematical and Computer Modelling”, Vol. 45, pp. 801-813.
+
 ---
 
 ## License
