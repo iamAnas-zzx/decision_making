@@ -46,7 +46,7 @@ pip install decision_making
 ## Important Links
 
 - Official source code repo: https://github.com/iamAnas-zzx/decision_making.git
-- Official research paper: 
+- Official research paper: https://github.com/iamAnas-zzx/decision_making/tree/main/research_paper
 
 ---
 
