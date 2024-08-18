@@ -13,6 +13,7 @@ Link for documnents and research paper: [docxdecison-making](https://github.com/
 ## Table of Contents 
 
 - [Installation](#installation)
+- [Important Links](#important-links)
 - [Available Methods](#available-methods)
 - [Usage](#usage)
 - [Features](#features)
@@ -39,6 +40,13 @@ You can simply download and install decision_making by:
 ```bash
 pip install decision_making
 ```
+
+---
+
+## Important Links
+
+- Official source code repo: https://github.com/iamAnas-zzx/decision_making.git
+- Official research paper: 
 
 ---
 
@@ -98,6 +106,7 @@ For more examples on how to use different methods with explanation see the docx 
     # Evaluting and getting answer
     ahp(criteria_names,alternative_names,matrix_per_criteria,criteria_comparison,
     print_weight_matrix=True)
+
     # Alternatively creating an object
     a = ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison,
     print_weight_matrix=True)
@@ -108,23 +117,37 @@ For more examples on how to use different methods with explanation see the docx 
 
 ## Features
 
-Additional features of this library are:
+Here's an example of additional features of this library are:
+For more examples on how to use additional features with explanation see the docx of [methods](https://github.com/iamAnas-zzx/decision_making/tree/main/docx_words).
 
+
+```python
+
+    # After creating an object for a particular methods 
+    # we can check different attributes to analyze the procedure of the method
+    a = ahp(criteria_names, alternative_names, matrix_per_criteria, criteria_comparison,
+    print_weight_matrix=True)
+
+    # different attributes are-
+    a.normalized_unweighted_matrix
+
+    a.weighted_matrix
+
+    a.most_suitable_alternative
+
+    a.rank_array
+
+
+```
 
 ---
-
-
-### Important Links
-
-- Official source code repo: https://github.com/iamAnas-zzx/decision_making.git
-- Official research paper: 
 
 ## Credits
 
 List of our collaborators:
 
-- Ahmad Anas - 
-- Eeshan Anand - 
+- Ahmad Anas - [github](https://github.com/iamAnas-zzx/)
+- Eeshan Anand - [github](https://github.com/EESHAN-ANAND-2002)
 ---
 
 ## References
