@@ -7,9 +7,7 @@ from setuptools import  setup, find_packages
 
 DISTNAME = "decision_making"
 DESCRIPTION = "A Python Package for Fuzzy Logic Technique in MCDM."
-# with open("README.md") as f:
-#     LONG_DESCRIPTION = f.read()
-# Open README.md with UTF-8 encoding
+
 with open("README.md", encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
 MAINTAINER = "Eeshan Anand"
@@ -21,7 +19,7 @@ PROJECT_URLS = {
     "Documentation": "https://github.com/iamAnas-zzx/decision_making/tree/main/docx_words",
     "Source Code": "https://github.com/iamAnas-zzx/decision_making.git",
 }
-VERSION = "1.1.1"
+VERSION = "1.0"
 
 from decision_making import min_dependency as md
 
