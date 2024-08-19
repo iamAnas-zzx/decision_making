@@ -147,7 +147,7 @@ For more examples on how to use additional features with explanation see the doc
 List of our collaborators:
 
 - Ahmad Anas - [github](https://github.com/iamAnas-zzx/)
-- Eeshan Anand - [github](https://github.com/EESHAN-ANAND-2002)
+- Eeshan Anand - [github](https://github.com/EESHAN-ANAND)
 ---
 
 ## References
