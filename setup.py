@@ -6,19 +6,22 @@ from setuptools import  setup, find_packages
 
 
 DISTNAME = "decision_making"
-DESCRIPTION = "A python package for Fuzzy-Multi Criteria Decision Making problems."
-with open("README.md") as f:
+DESCRIPTION = "A Python Package for Fuzzy Logic Technique in MCDM."
+# with open("README.md") as f:
+#     LONG_DESCRIPTION = f.read()
+# Open README.md with UTF-8 encoding
+with open("README.md", encoding="utf-8") as f:
     LONG_DESCRIPTION = f.read()
-MAINTAINER = "Ahmad Anas, Eeshan Anand"
-MAINTAINER_EMAIL = "anasahamd9616@gmail.com"
-URL = "https://github.com/iamAnas-zzx/decision_making.git"
-DOWNLOAD_URL = ""
+MAINTAINER = "Eeshan Anand"
+MAINTAINER_EMAIL = "e2002anand@gmail.com"
+# URL = "https://github.com/iamAnas-zzx/decision_making.git"
+# DOWNLOAD_URL = ""
 LICENSE = "MIT"
 PROJECT_URLS = {
-    "Documentation": "http://github.com/iamAnas-zzx/decision_making.git",
+    "Documentation": "https://github.com/iamAnas-zzx/decision_making/tree/main/docx_words",
     "Source Code": "https://github.com/iamAnas-zzx/decision_making.git",
 }
-VERSION = "1.0.0"
+VERSION = "1.1.1"
 
 from decision_making import min_dependency as md
 
@@ -32,8 +35,8 @@ def setup_package():
         maintainer_email=MAINTAINER_EMAIL,
         description=DESCRIPTION,
         license=LICENSE,
-        url=URL,
-        download_url=DOWNLOAD_URL,
+        # url=URL,
+        # download_url=DOWNLOAD_URL,
         project_urls=PROJECT_URLS,
         version=VERSION,
         long_description=LONG_DESCRIPTION,

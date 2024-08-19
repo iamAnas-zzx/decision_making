@@ -1,7 +1,9 @@
 .venv/
+.myenv/
 test/
-build/
 dist/
+build/
+dist1/
 decision_making.egg-info
 decision_making/__pycache__/
 decision_making/ahp/__pycache__/
