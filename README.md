@@ -182,7 +182,7 @@ List of our collaborators:
 
 <a name="ref1">**[15]**</a> Łuczak A., Wysocki F. (2006): Rozmyta wielokryterialna metoda porządkowania liniowego obiektów. Taksonomia 13, Prace Naukowe, Wydawnictwo Akademii Ekonomicznej, Wrocław, pp. 148-157.
 
-<a name="ref1">**[12]**</a> Shih H.S., Shyur H.J., Lee E.S. (2007): An Extension of TOPSIS for Group Decision Making. “Mathematical and Computer Modelling”, Vol. 45, pp. 801-813.
+<a name="ref1">**[16]**</a> Shih H.S., Shyur H.J., Lee E.S. (2007): An Extension of TOPSIS for Group Decision Making. “Mathematical and Computer Modelling”, Vol. 45, pp. 801-813.
 
 ---
 
